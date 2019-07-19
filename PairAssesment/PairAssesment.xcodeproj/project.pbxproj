@@ -11,10 +11,9 @@
 		6A12072122E2191300CF72C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A12071F22E2191300CF72C7 /* Main.storyboard */; };
 		6A12072322E2191400CF72C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A12072222E2191400CF72C7 /* Assets.xcassets */; };
 		6A12072622E2191400CF72C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A12072422E2191400CF72C7 /* LaunchScreen.storyboard */; };
-		6A12072E22E21A0E00CF72C7 /* PairTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A12072D22E21A0E00CF72C7 /* PairTableViewController.swift */; };
-		6A12073222E21A4900CF72C7 /* PairModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A12073122E21A4900CF72C7 /* PairModel.swift */; };
-		6A12073522E21D1C00CF72C7 /* PairTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A12073422E21D1C00CF72C7 /* PairTableViewCell.swift */; };
+		6A12073222E21A4900CF72C7 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A12073122E21A4900CF72C7 /* Person.swift */; };
 		6A12073822E21D4300CF72C7 /* PairTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A12073722E21D4300CF72C7 /* PairTableViewController.swift */; };
+		6A12073B22E2200100CF72C7 /* PairController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A12073A22E2200100CF72C7 /* PairController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,10 +23,9 @@
 		6A12072222E2191400CF72C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6A12072522E2191400CF72C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6A12072722E2191400CF72C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6A12072D22E21A0E00CF72C7 /* PairTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairTableViewController.swift; sourceTree = "<group>"; };
-		6A12073122E21A4900CF72C7 /* PairModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairModel.swift; sourceTree = "<group>"; };
-		6A12073422E21D1C00CF72C7 /* PairTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairTableViewCell.swift; sourceTree = "<group>"; };
+		6A12073122E21A4900CF72C7 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		6A12073722E21D4300CF72C7 /* PairTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairTableViewController.swift; sourceTree = "<group>"; };
+		6A12073A22E2200100CF72C7 /* PairController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +69,7 @@
 		6A12072F22E21A1500CF72C7 /* Model Controller */ = {
 			isa = PBXGroup;
 			children = (
-				6A12072D22E21A0E00CF72C7 /* PairTableViewController.swift */,
+				6A12073A22E2200100CF72C7 /* PairController.swift */,
 			);
 			path = "Model Controller";
 			sourceTree = "<group>";
@@ -91,24 +89,15 @@
 		6A12073322E21A4F00CF72C7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6A12073122E21A4900CF72C7 /* PairModel.swift */,
+				6A12073122E21A4900CF72C7 /* Person.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		6A12073622E21D2800CF72C7 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				6A12073422E21D1C00CF72C7 /* PairTableViewCell.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		6A12073922E21D4800CF72C7 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
 				6A12073722E21D4300CF72C7 /* PairTableViewController.swift */,
-				6A12073622E21D2800CF72C7 /* View */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -184,11 +173,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A12073222E21A4900CF72C7 /* PairModel.swift in Sources */,
+				6A12073222E21A4900CF72C7 /* Person.swift in Sources */,
 				6A12073822E21D4300CF72C7 /* PairTableViewController.swift in Sources */,
-				6A12073522E21D1C00CF72C7 /* PairTableViewCell.swift in Sources */,
+				6A12073B22E2200100CF72C7 /* PairController.swift in Sources */,
 				6A12071C22E2191300CF72C7 /* AppDelegate.swift in Sources */,
-				6A12072E22E21A0E00CF72C7 /* PairTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

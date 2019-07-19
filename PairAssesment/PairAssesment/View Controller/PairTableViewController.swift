@@ -8,39 +8,50 @@
 
 import UIKit
 
-class PairTableViewController: UITableViewController {
+class PairTableViewController: UITableViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+    }
+    
+    @IBAction func addButtonTapped(_ sender: Any) {
+        presentAlertController()
+    }
+    
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        guard let pairsCount = PairController.sharedInstance.pairsCount else { return 1 }
+        return pairsCount
+        
+        
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return PairController.sharedInstance.allPeople.count
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "pairCell", for: indexPath)
+        
+        let name = PairController.sharedInstance.allPeople[indexPath.row]
+        
+        cell.textLabel?.text = name.fullName
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -50,9 +61,10 @@ class PairTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    
+    /* override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
@@ -60,7 +72,8 @@ class PairTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+ */
+
 
     /*
     // Override to support rearranging the table view.
@@ -76,15 +89,38 @@ class PairTableViewController: UITableViewController {
         return true
     }
     */
+        
+// alert controller function
+        func presentAlertController() {
+            
+            let alertController = UIAlertController(title: "Add Person", message: "Add someone new to the list", preferredStyle: .alert)
+            
+            alertController.addTextField { (textField) in
+                textField.placeholder = "Enter full name"
+                textField.delegate = self
+            }
+            
+            // Action: Add
+            let addNameAction = UIAlertAction(title: "Add", style: .default) { (_) in
+                // retrieve name from text field
+                guard let nameText = alertController.textFields?.first?.text else { return }
+                if nameText != "" {
+                    // call shared instance add func
+                    PairController.sharedInstance.fetchPeople(person: nameText)
+                }
+            }
+            // Action: Cancel
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            
+            // implement actions to Alert Controller (main/parent)
+            alertController.addAction(addNameAction)
+            alertController.addAction(cancelAction)
+            // show configured alert controller
+            self.present(alertController, animated: true)
+            tableView.reloadData()
+            
+        }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
 
-}
+
